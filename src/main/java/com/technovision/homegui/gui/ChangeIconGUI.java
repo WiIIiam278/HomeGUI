@@ -2,7 +2,7 @@ package com.technovision.homegui.gui;
 
 import com.cryptomorin.xseries.XMaterial;
 import com.technovision.homegui.Homegui;
-import com.technovision.homegui.playerdata.Home;
+import com.technovision.homegui.playerdata.HomeIcon;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -16,8 +16,8 @@ import java.util.*;
 public class ChangeIconGUI implements InventoryHolder, Listener {
 
     public static List<String> activeGui = new ArrayList<String>();
-    public static Map<String, Home> homes = new HashMap<>();
-    private Inventory inv;
+    public static Map<String, HomeIcon> homes = new HashMap<>();
+    private final Inventory inv;
 
     public ChangeIconGUI() {
         String title = Homegui.PLUGIN.getConfig().getString("gui-icon-header").replace('&', '§');
@@ -28,12 +28,14 @@ public class ChangeIconGUI implements InventoryHolder, Listener {
 
     private ItemStack addItemLore(ItemStack item) {
         final ItemMeta meta = item.getItemMeta();
-        meta.setLore(Arrays.asList(Homegui.PLUGIN.getConfig().getString("icon-select-lore-message").replace('&', '§')));
-        item.setItemMeta(meta);
+        if (meta != null) {
+            meta.setLore(Collections.singletonList(Homegui.PLUGIN.getConfig().getString("icon-select-lore-message").replace('&', '§')));
+            item.setItemMeta(meta);
+        }
         return item;
     }
 
-    public void openInventory(Player player, Home home) {
+    public void openInventory(Player player, HomeIcon home) {
         player.openInventory(inv);
         activeGui.add(player.getName());
         homes.put(player.getUniqueId().toString(), home);
@@ -48,7 +50,7 @@ public class ChangeIconGUI implements InventoryHolder, Listener {
                     inv.addItem(addItemLore(item));
                 }
             } catch (IllegalArgumentException e) {
-                Homegui.PLUGIN.getLogger().config("ERROR: Incorrect or Missing Material Type in Config.yml!");
+                Homegui.PLUGIN.getLogger().config("Error: Incorrect or Missing Material Type in Config.yml!");
             }
         }
     }

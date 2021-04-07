@@ -1,5 +1,5 @@
 # +------------------------------------------------------+ #
-# |                 HomeGUI (Configuration)              | #
+# |              HuskHomesGUI (Configuration)              | #
 # +------------------------------------------------------+ #
 # If you have problems, join the HomeGUI help support channel:
 # https://discord.gg/D34gGVu
@@ -25,7 +25,9 @@ home-color: '&b&l'
 home-lore:
   - '&7Location: &f{location}'
   - '&7World: &f{world}'
-  - ' '
+  - '&7Server: &f{server}'
+  - '&7Access: &f{privacy}'
+  - ''
   - '&7Left-Click to Teleport'
   - '&7Middle-Click to Delete Home'
   - '&7Right-Click to Edit Icon'

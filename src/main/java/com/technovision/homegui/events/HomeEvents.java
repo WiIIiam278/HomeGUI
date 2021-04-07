@@ -17,26 +17,33 @@ public class HomeEvents implements Listener {
     @EventHandler
     public void onGuiActivation(InventoryClickEvent event){
         if (event.getInventory().getHolder() instanceof HomeGUI) {
-            if (event.getClickedInventory() == null) { return; }
+            if (event.getClickedInventory() == null) {
+                return;
+            }
             Player player = (Player) event.getWhoClicked();
             if (event.getCurrentItem() != null) {
-                if (event.getCurrentItem().getType() == Material.AIR) { return; }
+                if (event.getCurrentItem().getType() == Material.AIR) {
+                    return;
+                }
                 event.setCancelled(true);
-                if (event.getClickedInventory().getType() == InventoryType.PLAYER) { return; }
+                if (event.getClickedInventory().getType() == InventoryType.PLAYER) {
+                    return;
+                }
                 String playerID = player.getUniqueId().toString();
                 int slotNum = event.getSlot();
                 String name = HomeGUI.allHomes.get(playerID).get(slotNum).getName();
-                //Left Click
+
                 if (event.isLeftClick()) {
-                    player.performCommand("essentials:home " + name);
+                    // Middle Click
+                    player.performCommand("huskhomes:home " + name);
                     player.closeInventory();
-                    //Middle Click
                 } else if (event.getClick() == ClickType.MIDDLE) {
-                    player.performCommand("essentials:delhome " + name);
+                    // Middle Click
+                    player.performCommand("huskhomes:delhome " + name);
                     Homegui.dataReader.removeIcon(playerID, name);
                     player.closeInventory();
-                    //Right Click
                 } else if (event.isRightClick()) {
+                    // Right Click
                     player.closeInventory();
                     ChangeIconGUI iconGUI = new ChangeIconGUI();
                     iconGUI.openInventory(player, HomeGUI.allHomes.get(playerID).get(slotNum));
@@ -72,23 +79,21 @@ public class HomeEvents implements Listener {
             return capitalize(s);
         }
         String[] j = s.split("_");
-        String c = "";
+        StringBuilder c = new StringBuilder();
         for (String f : j) {
             f = capitalize(f);
-            c += c.equalsIgnoreCase("") ? f : " " + f;
+            c.append(c.toString().equalsIgnoreCase("") ? f : " " + f);
         }
-        return c;
+        return c.toString();
     }
 
     private String capitalize(String text) {
         String firstLetter = text.substring(0, 1).toUpperCase();
         String next = text.substring(1).toLowerCase();
-        String capitalized = firstLetter + next;
-        return capitalized;
+        return firstLetter + next;
     }
 
     public String getFriendlyName(Material m) {
-        String name = format(m.name());
-        return name;
+        return format(m.name());
     }
 }

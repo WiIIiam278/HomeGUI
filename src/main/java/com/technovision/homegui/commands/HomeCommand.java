@@ -21,10 +21,10 @@ public class HomeCommand implements CommandExecutor {
             // Home GUI
             if (cmd.getName().equalsIgnoreCase(HOME)) {
                 if (args.length == 0) {
-                    HomeGUI gui = new HomeGUI(player.getUniqueId());
+                    HomeGUI gui = new HomeGUI(player.getName(), player.getUniqueId());
                     player.openInventory(gui.getInventory());
                 } else if (args.length == 1) {
-                    player.performCommand("essentials:home " + args[0]);
+                    player.performCommand("huskhomes:home " + args[0]);
                 }
             }
 
@@ -36,7 +36,7 @@ public class HomeCommand implements CommandExecutor {
                     if (args[0].equalsIgnoreCase("reload")) {
                         if (player.hasPermission("home.rl") || player.isOp()) {
                             Homegui.PLUGIN.reloadConfig();
-                            sender.sendMessage("§7[§eHomeGUI§7]§f: Config file reloaded");
+                            sender.sendMessage("§7[§eHuskHomesGUI§7]§f: Config file reloaded");
                         } else {
                             sender.sendMessage(ChatColor.RED + "You do not have permission to use that!");
                         }

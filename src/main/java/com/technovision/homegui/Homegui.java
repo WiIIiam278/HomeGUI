@@ -26,7 +26,7 @@ public class Homegui extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        getServer().getConsoleSender().sendMessage( "[HomeGUI]: Plugin has been disabled.");
+        getServer().getConsoleSender().sendMessage( "[HuskHomesGUI] Plugin has been disabled.");
     }
 
     public void loadConfig() {

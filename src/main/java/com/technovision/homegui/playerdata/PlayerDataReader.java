@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class PlayerDataReader {
 
-    private static final String dir = "plugins/HomeGUI/userdata/";
+    private static final String dir = "plugins/HuskHomesGUI/userdata/";
     private static Map<String, File> playerFiles;
 
 
@@ -34,7 +34,7 @@ public class PlayerDataReader {
             dataFile.createNewFile();
             playerFiles.put(playerUUID, dataFile);
         } catch (IOException e) {
-            Bukkit.broadcastMessage(ChatColor.RED + "File does not exist. Cannot load file.");
+            Bukkit.broadcastMessage(ChatColor.DARK_RED + "Error: " + ChatColor.RED + "File does not exist. Cannot load file.");
         }
     }
 
@@ -45,7 +45,7 @@ public class PlayerDataReader {
             dataFileConfig.set(key, icon.toString());
             dataFileConfig.save(dataFile);
         } catch (IOException e) {
-            Bukkit.broadcastMessage(ChatColor.RED + "File does not exist. Cannot load file.");
+            Bukkit.broadcastMessage(ChatColor.DARK_RED + "Error: " + ChatColor.RED + "File does not exist. Cannot load file.");
         }
     }
 
@@ -79,7 +79,7 @@ public class PlayerDataReader {
                 dataFileConfig.save(dataFile);
             }
         } catch (IOException e) {
-            Bukkit.broadcastMessage(ChatColor.RED + "File does not exist. Cannot load file.");
+            Bukkit.broadcastMessage(ChatColor.DARK_RED + "Error: " + ChatColor.RED + "File does not exist. Cannot load file.");
         }
     }
 }

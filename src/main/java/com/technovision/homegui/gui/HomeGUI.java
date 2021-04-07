@@ -1,8 +1,8 @@
 package com.technovision.homegui.gui;
 
 import com.technovision.homegui.Homegui;
-import com.technovision.homegui.playerdata.EssentialsReader;
-import com.technovision.homegui.playerdata.Home;
+import com.technovision.homegui.playerdata.HomeIcon;
+import com.technovision.homegui.playerdata.HuskHomesReader;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
@@ -13,18 +13,18 @@ import java.util.*;
 
 public class HomeGUI implements InventoryHolder {
 
-    public static Map<String, List<Home>> allHomes = new HashMap<>();
+    public static Map<String, List<HomeIcon>> allHomes = new HashMap<>();
 
     private Inventory inv;
-    private List<Home> homes;
+    private List<HomeIcon> homes;
 
-    public HomeGUI(UUID playerUUID) {
-        EssentialsReader reader = new EssentialsReader(playerUUID.toString());
+    public HomeGUI(String playerName, UUID playerUUID) {
+        HuskHomesReader reader = new HuskHomesReader(playerName);
         homes = reader.getHomes();
         String title = Homegui.PLUGIN.getConfig().getString("gui-main-header").replace('&', '§');
         title = title.replace("§8", "");
         inv = Bukkit.createInventory(this, calculateSize(), title);
-        allHomes.put(playerUUID.toString(), homes);
+        allHomes.put(playerName, homes);
         Homegui.dataReader.create(playerUUID.toString());
         initItems(playerUUID.toString());
     }
@@ -43,7 +43,7 @@ public class HomeGUI implements InventoryHolder {
 
     private void initItems(String playerID) {
         String name;
-        for (Home home : homes) {
+        for (HomeIcon home : homes) {
             name = home.getName().substring(0, 1).toUpperCase() + home.getName().substring(1);
             ItemStack item = Homegui.dataReader.getItem(playerID, home.getName());
             String nameColor = Homegui.PLUGIN.getConfig().getString("home-color").replace("&", "§");
@@ -52,7 +52,15 @@ public class HomeGUI implements InventoryHolder {
             String location = "§f " + home.getX() + "x§7,§f " + home.getY() + "y§7,§f " + home.getZ() + "z";
             for (int i = 0; i < lore.size(); i++) {
                 String newLine = lore.get(i).replace("{location}", location);
-                newLine = newLine.replace("{world}", home.getWorld());
+                newLine = newLine.replace("{world}", home.getWorldName());
+                newLine = newLine.replace("{server}", home.getServer());
+                if (newLine.contains("{privacy}")) {
+                    if (home.isPublic()) {
+                        newLine = newLine.replace("{privacy}", "§2Public");
+                    } else {
+                        newLine = newLine.replace("{privacy}", "§cPrivate");
+                    }
+                }
                 if (newLine.contains("&")) {
                     newLine = newLine.replace("&", "§");
                 } else {
