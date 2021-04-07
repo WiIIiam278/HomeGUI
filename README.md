@@ -9,5 +9,5 @@ This plugin supports HuskHomes v2.3+. To install it, simply download HuskHomes a
 * This plugin does not support HuskHomes warps... yet.
 
 ## Links
-* [Get HuskHomes](https://www.spigotmc.org/resources/homegui-1-8-1-16.77852/))
+* [Get HuskHomes](https://www.spigotmc.org/resources/homegui-1-8-1-16.77852/)
 * [Original Plugin](https://www.spigotmc.org/resources/homegui-1-8-1-16.77852/)
