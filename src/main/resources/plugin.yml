@@ -1,15 +1,15 @@
 name: HuskHomesGUI
 description: Fork of HomeGUI that works with HuskHomes
 version: 1.0
-main: com.technovision.homegui.Homegui
+main: com.technovision.HuskHomesGUI.HuskHomesGUI
 api-version: 1.16
 depend: [HuskHomes]
 authors: [TechnoVision, William278]
 commands:
   home:
-    description: Opens the HomeGUI screen.
+    description: Opens the HuskHomesGUI screen.
     usage: /<command>
     aliases: homes
   h:
-    description: Reloads the HomeGUI config.
+    description: Reloads the HuskHomesGUI config.
     usage: /<command>

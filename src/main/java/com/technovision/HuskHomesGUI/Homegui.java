@@ -1,8 +1,8 @@
-package com.technovision.homegui;
+package com.technovision.HuskHomesGUI;
 
-import com.technovision.homegui.commands.HomeCommand;
-import com.technovision.homegui.events.HomeEvents;
-import com.technovision.homegui.playerdata.PlayerDataReader;
+import com.technovision.HuskHomesGUI.commands.HomeCommand;
+import com.technovision.HuskHomesGUI.events.HomeEvents;
+import com.technovision.HuskHomesGUI.playerdata.PlayerDataReader;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Homegui extends JavaPlugin {

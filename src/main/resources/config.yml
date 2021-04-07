@@ -1,9 +1,6 @@
 # +------------------------------------------------------+ #
 # |              HuskHomesGUI (Configuration)              | #
 # +------------------------------------------------------+ #
-# If you have problems, join the HomeGUI help support channel:
-# https://discord.gg/D34gGVu
-# -----------------------------------------------------------
 # Use these placeholders to display information:
 # {world} ---> Displays the home world (home-lore)
 # {location} ---> Displays the x,y,z home coordinates (home-lore)
@@ -13,7 +10,7 @@
 # IMPORTANT NOTES:
 #    > Do not add more than 54 icons!
 #    > Wrap your text in '' (quotes) if using color codes
-#    > Only use {world} and {location} in home-lore
+#    > Only use {world}, {location}, {privacy} and {server} in home-lore
 #    > Only use {home} and {icon} in icon-select-message
 # ------------------------------------------------------------
 gui-main-header: '&8Your Homes'

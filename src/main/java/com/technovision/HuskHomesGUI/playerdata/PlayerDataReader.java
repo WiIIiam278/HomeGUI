@@ -1,4 +1,4 @@
-package com.technovision.homegui.playerdata;
+package com.technovision.HuskHomesGUI.playerdata;
 
 import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Bukkit;

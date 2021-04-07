@@ -1,4 +1,4 @@
-package com.technovision.homegui.playerdata;
+package com.technovision.HuskHomesGUI.playerdata;
 
 import me.william278.huskhomes2.teleport.points.Home;
 import me.william278.huskhomes2.teleport.points.TeleportationPoint;

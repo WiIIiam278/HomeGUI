@@ -1,9 +1,9 @@
-package com.technovision.homegui.events;
+package com.technovision.HuskHomesGUI.events;
 
 import com.cryptomorin.xseries.XMaterial;
-import com.technovision.homegui.Homegui;
-import com.technovision.homegui.gui.ChangeIconGUI;
-import com.technovision.homegui.gui.HomeGUI;
+import com.technovision.HuskHomesGUI.Homegui;
+import com.technovision.HuskHomesGUI.gui.ChangeIconGUI;
+import com.technovision.HuskHomesGUI.gui.HuskHomesGUI;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,7 +16,7 @@ public class HomeEvents implements Listener {
 
     @EventHandler
     public void onGuiActivation(InventoryClickEvent event){
-        if (event.getInventory().getHolder() instanceof HomeGUI) {
+        if (event.getInventory().getHolder() instanceof HuskHomesGUI) {
             if (event.getClickedInventory() == null) {
                 return;
             }
@@ -31,7 +31,7 @@ public class HomeEvents implements Listener {
                 }
                 String playerID = player.getUniqueId().toString();
                 int slotNum = event.getSlot();
-                String name = HomeGUI.allHomes.get(playerID).get(slotNum).getName();
+                String name = HuskHomesGUI.allHomes.get(playerID).get(slotNum).getName();
 
                 if (event.isLeftClick()) {
                     // Middle Click
@@ -46,7 +46,7 @@ public class HomeEvents implements Listener {
                     // Right Click
                     player.closeInventory();
                     ChangeIconGUI iconGUI = new ChangeIconGUI();
-                    iconGUI.openInventory(player, HomeGUI.allHomes.get(playerID).get(slotNum));
+                    iconGUI.openInventory(player, HuskHomesGUI.allHomes.get(playerID).get(slotNum));
                 }
             }
         } else if (event.getInventory().getHolder() instanceof ChangeIconGUI) {

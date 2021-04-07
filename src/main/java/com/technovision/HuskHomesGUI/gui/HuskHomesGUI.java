@@ -1,8 +1,8 @@
-package com.technovision.homegui.gui;
+package com.technovision.HuskHomesGUI.gui;
 
-import com.technovision.homegui.Homegui;
-import com.technovision.homegui.playerdata.HomeIcon;
-import com.technovision.homegui.playerdata.HuskHomesReader;
+import com.technovision.HuskHomesGUI.Homegui;
+import com.technovision.HuskHomesGUI.playerdata.HomeIcon;
+import com.technovision.HuskHomesGUI.playerdata.HuskHomesReader;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
@@ -11,14 +11,14 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.*;
 
-public class HomeGUI implements InventoryHolder {
+public class HuskHomesGUI implements InventoryHolder {
 
     public static Map<String, List<HomeIcon>> allHomes = new HashMap<>();
 
     private Inventory inv;
     private List<HomeIcon> homes;
 
-    public HomeGUI(String playerName, UUID playerUUID) {
+    public HuskHomesGUI(String playerName, UUID playerUUID) {
         HuskHomesReader reader = new HuskHomesReader(playerName);
         homes = reader.getHomes();
         String title = Homegui.PLUGIN.getConfig().getString("gui-main-header").replace('&', '§');

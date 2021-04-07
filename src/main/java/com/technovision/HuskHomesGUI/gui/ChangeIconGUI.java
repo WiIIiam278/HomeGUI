@@ -1,8 +1,8 @@
-package com.technovision.homegui.gui;
+package com.technovision.HuskHomesGUI.gui;
 
 import com.cryptomorin.xseries.XMaterial;
-import com.technovision.homegui.Homegui;
-import com.technovision.homegui.playerdata.HomeIcon;
+import com.technovision.HuskHomesGUI.Homegui;
+import com.technovision.HuskHomesGUI.playerdata.HomeIcon;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;

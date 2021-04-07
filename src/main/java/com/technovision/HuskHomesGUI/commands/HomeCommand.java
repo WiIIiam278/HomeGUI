@@ -1,7 +1,7 @@
-package com.technovision.homegui.commands;
+package com.technovision.HuskHomesGUI.commands;
 
-import com.technovision.homegui.Homegui;
-import com.technovision.homegui.gui.HomeGUI;
+import com.technovision.HuskHomesGUI.Homegui;
+import com.technovision.HuskHomesGUI.gui.HuskHomesGUI;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -21,7 +21,7 @@ public class HomeCommand implements CommandExecutor {
             // Home GUI
             if (cmd.getName().equalsIgnoreCase(HOME)) {
                 if (args.length == 0) {
-                    HomeGUI gui = new HomeGUI(player.getName(), player.getUniqueId());
+                    HuskHomesGUI gui = new HuskHomesGUI(player.getName(), player.getUniqueId());
                     player.openInventory(gui.getInventory());
                 } else if (args.length == 1) {
                     player.performCommand("huskhomes:home " + args[0]);
