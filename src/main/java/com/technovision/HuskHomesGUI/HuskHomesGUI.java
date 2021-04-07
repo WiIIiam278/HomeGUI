@@ -1,6 +1,6 @@
 package com.technovision.HuskHomesGUI;
 
-import com.technovision.HuskHomesGUI.commands.HomeCommand;
+import com.technovision.HuskHomesGUI.commands.ViewHomes;
 import com.technovision.HuskHomesGUI.events.HomeEvents;
 import com.technovision.HuskHomesGUI.playerdata.PlayerDataReader;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -16,12 +16,11 @@ public class HuskHomesGUI extends JavaPlugin {
         dataReader = new PlayerDataReader();
         loadConfig();
 
-        //Events
+        // Register Events
         getServer().getPluginManager().registerEvents(new HomeEvents(), this);
 
-        //Commands
-        getCommand(HomeCommand.HOME).setExecutor(new HomeCommand());
-        getCommand(HomeCommand.H).setExecutor(new HomeCommand());
+        // Register Commands
+        getCommand("home").setExecutor(new ViewHomes());
     }
 
     @Override
