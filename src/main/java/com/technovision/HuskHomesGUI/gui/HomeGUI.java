@@ -49,7 +49,7 @@ public class HomeGUI implements InventoryHolder {
             String nameColor = HuskHomesGUI.PLUGIN.getConfig().getString("home-color").replace("&", "§");
             name = nameColor + name;
             List<String> lore = HuskHomesGUI.PLUGIN.getConfig().getStringList("home-lore");
-            String location = "§f " + home.getX() + "x§7,§f " + home.getY() + "y§7,§f " + home.getZ() + "z";
+            String location = "§f " + (int) home.getX() + "§7,§f " + (int) home.getY() + "§7,§f " + (int) home.getZ();
             for (int i = 0; i < lore.size(); i++) {
                 String newLine = lore.get(i).replace("{location}", location);
                 newLine = newLine.replace("{world}", home.getWorldName());
