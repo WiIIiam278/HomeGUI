@@ -1,7 +1,5 @@
 package com.technovision.HuskHomesGUI.playerdata;
 
-import me.william278.huskhomes2.HuskHomes;
-import me.william278.huskhomes2.api.HuskHomesAPI;
 import me.william278.huskhomes2.teleport.points.Home;
 import me.william278.huskhomes2.teleport.points.TeleportationPoint;
 import org.bukkit.Material;
