@@ -6,6 +6,8 @@
 # {location} ---> Displays the x,y,z home coordinates (home-lore)
 # {home} ---> Displays the home name (icon-select-message)
 # {icon} ---> Displays the icon name (icon-select-message)
+# {privacy} ---> Displays "Private" or "Public" if the home is public (icon-select-message)
+# {server} ---> Displays the server the home is on (icon-select-message)
 # ------------------------------------------------------------
 # IMPORTANT NOTES:
 #    > Do not add more than 54 icons!
@@ -16,7 +18,7 @@
 gui-main-header: '&8Your Homes'
 gui-icon-header: '&8Select Home Icon'
 gui-sethome-header: '&8Set Home'
-icon-select-message: '&a&l(!) &aSaved {home} home icon to &n{icon}'
+icon-select-message: '&aSaved &l{home}&r&a home icon to &l{icon}'
 icon-select-lore-message: '&7Click to select material.'
 home-color: '&b&l'
 home-lore:
