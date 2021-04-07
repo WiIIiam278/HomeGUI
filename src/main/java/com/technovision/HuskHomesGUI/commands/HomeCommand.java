@@ -31,7 +31,7 @@ public class HomeCommand implements CommandExecutor {
             // Reload
             else if (cmd.getName().equalsIgnoreCase(H)) {
                 if (args.length == 0) {
-                    player.performCommand("homegui:home");
+                    player.performCommand("huskhomesgui:home");
                 } else if (args.length == 1) {
                     if (args[0].equalsIgnoreCase("reload")) {
                         if (player.hasPermission("home.rl") || player.isOp()) {
