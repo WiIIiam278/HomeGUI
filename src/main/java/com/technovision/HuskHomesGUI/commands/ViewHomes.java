@@ -25,6 +25,7 @@ public class ViewHomes implements CommandExecutor {
             } else {
                 player.performCommand("huskhomes:home " + args[0]);
             }
+            return true;
         }
         return false;
     }

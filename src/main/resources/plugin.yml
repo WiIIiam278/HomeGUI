@@ -10,4 +10,4 @@ commands:
   home:
     description: Opens the home GUI
     usage: /home
-    aliases: homes, homelist
+    aliases: [homes, homelist]
