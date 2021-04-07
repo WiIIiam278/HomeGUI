@@ -1,7 +1,7 @@
 package com.technovision.HuskHomesGUI.commands;
 
-import com.technovision.HuskHomesGUI.Homegui;
-import com.technovision.HuskHomesGUI.gui.HuskHomesGUI;
+import com.technovision.HuskHomesGUI.HuskHomesGUI;
+import com.technovision.HuskHomesGUI.gui.HomeGUI;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -21,7 +21,7 @@ public class HomeCommand implements CommandExecutor {
             // Home GUI
             if (cmd.getName().equalsIgnoreCase(HOME)) {
                 if (args.length == 0) {
-                    HuskHomesGUI gui = new HuskHomesGUI(player.getName(), player.getUniqueId());
+                    HomeGUI gui = new HomeGUI(player.getName(), player.getUniqueId());
                     player.openInventory(gui.getInventory());
                 } else if (args.length == 1) {
                     player.performCommand("huskhomes:home " + args[0]);
@@ -35,7 +35,7 @@ public class HomeCommand implements CommandExecutor {
                 } else if (args.length == 1) {
                     if (args[0].equalsIgnoreCase("reload")) {
                         if (player.hasPermission("home.rl") || player.isOp()) {
-                            Homegui.PLUGIN.reloadConfig();
+                            HuskHomesGUI.PLUGIN.reloadConfig();
                             sender.sendMessage("§7[§eHuskHomesGUI§7]§f: Config file reloaded");
                         } else {
                             sender.sendMessage(ChatColor.RED + "You do not have permission to use that!");

@@ -1,6 +1,6 @@
 package com.technovision.HuskHomesGUI.gui;
 
-import com.technovision.HuskHomesGUI.Homegui;
+import com.technovision.HuskHomesGUI.HuskHomesGUI;
 import com.technovision.HuskHomesGUI.playerdata.HomeIcon;
 import com.technovision.HuskHomesGUI.playerdata.HuskHomesReader;
 import org.bukkit.Bukkit;
@@ -11,21 +11,21 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.*;
 
-public class HuskHomesGUI implements InventoryHolder {
+public class HomeGUI implements InventoryHolder {
 
     public static Map<String, List<HomeIcon>> allHomes = new HashMap<>();
 
     private Inventory inv;
     private List<HomeIcon> homes;
 
-    public HuskHomesGUI(String playerName, UUID playerUUID) {
+    public HomeGUI(String playerName, UUID playerUUID) {
         HuskHomesReader reader = new HuskHomesReader(playerName);
         homes = reader.getHomes();
-        String title = Homegui.PLUGIN.getConfig().getString("gui-main-header").replace('&', '§');
+        String title = HuskHomesGUI.PLUGIN.getConfig().getString("gui-main-header").replace('&', '§');
         title = title.replace("§8", "");
         inv = Bukkit.createInventory(this, calculateSize(), title);
         allHomes.put(playerName, homes);
-        Homegui.dataReader.create(playerUUID.toString());
+        HuskHomesGUI.dataReader.create(playerUUID.toString());
         initItems(playerUUID.toString());
     }
 
@@ -45,10 +45,10 @@ public class HuskHomesGUI implements InventoryHolder {
         String name;
         for (HomeIcon home : homes) {
             name = home.getName().substring(0, 1).toUpperCase() + home.getName().substring(1);
-            ItemStack item = Homegui.dataReader.getItem(playerID, home.getName());
-            String nameColor = Homegui.PLUGIN.getConfig().getString("home-color").replace("&", "§");
+            ItemStack item = HuskHomesGUI.dataReader.getItem(playerID, home.getName());
+            String nameColor = HuskHomesGUI.PLUGIN.getConfig().getString("home-color").replace("&", "§");
             name = nameColor + name;
-            List<String> lore = Homegui.PLUGIN.getConfig().getStringList("home-lore");
+            List<String> lore = HuskHomesGUI.PLUGIN.getConfig().getStringList("home-lore");
             String location = "§f " + home.getX() + "x§7,§f " + home.getY() + "y§7,§f " + home.getZ() + "z";
             for (int i = 0; i < lore.size(); i++) {
                 String newLine = lore.get(i).replace("{location}", location);

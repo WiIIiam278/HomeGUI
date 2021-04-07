@@ -5,9 +5,9 @@ import com.technovision.HuskHomesGUI.events.HomeEvents;
 import com.technovision.HuskHomesGUI.playerdata.PlayerDataReader;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class Homegui extends JavaPlugin {
+public class HuskHomesGUI extends JavaPlugin {
 
-    public static Homegui PLUGIN;
+    public static HuskHomesGUI PLUGIN;
     public static PlayerDataReader dataReader;
 
     @Override
