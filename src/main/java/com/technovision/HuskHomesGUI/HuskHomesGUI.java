@@ -20,7 +20,7 @@ public class HuskHomesGUI extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new HomeEvents(), this);
 
         // Register Commands
-        getCommand("home").setExecutor(new ViewHomes());
+        getCommand("h").setExecutor(new ViewHomes());
     }
 
     @Override

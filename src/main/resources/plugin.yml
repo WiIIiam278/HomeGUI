@@ -7,7 +7,7 @@ depend: [HuskHomes]
 loadbefore: [HuskHomes]
 authors: [TechnoVision, William278]
 commands:
-  home:
+  h:
     description: Opens the home GUI
-    usage: /home
-    aliases: [homes, homelist]
+    usage: /h
+    aliases: [home, homes, homelist]
