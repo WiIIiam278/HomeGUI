@@ -29,9 +29,9 @@ public class HomeEvents implements Listener {
                 if (event.getClickedInventory().getType() == InventoryType.PLAYER) {
                     return;
                 }
-                String playerID = player.getUniqueId().toString();
+                String playerName = player.getName();
                 int slotNum = event.getSlot();
-                String name = HomeGUI.allHomes.get(playerID).get(slotNum).getName();
+                String name = HomeGUI.allHomes.get(playerName).get(slotNum).getName();
 
                 if (event.isLeftClick()) {
                     // Middle Click
@@ -40,13 +40,13 @@ public class HomeEvents implements Listener {
                 } else if (event.getClick() == ClickType.MIDDLE) {
                     // Middle Click
                     player.performCommand("huskhomes:delhome " + name);
-                    HuskHomesGUI.dataReader.removeIcon(playerID, name);
+                    HuskHomesGUI.dataReader.removeIcon(player.getUniqueId().toString(), name);
                     player.closeInventory();
                 } else if (event.isRightClick()) {
                     // Right Click
                     player.closeInventory();
                     ChangeIconGUI iconGUI = new ChangeIconGUI();
-                    iconGUI.openInventory(player, HomeGUI.allHomes.get(playerID).get(slotNum));
+                    iconGUI.openInventory(player, HomeGUI.allHomes.get(playerName).get(slotNum));
                 }
             }
         } else if (event.getInventory().getHolder() instanceof ChangeIconGUI) {
