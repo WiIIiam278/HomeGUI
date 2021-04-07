@@ -4,6 +4,7 @@ import com.cryptomorin.xseries.XMaterial;
 import com.technovision.HuskHomesGUI.HuskHomesGUI;
 import com.technovision.HuskHomesGUI.gui.ChangeIconGUI;
 import com.technovision.HuskHomesGUI.gui.HomeGUI;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -11,6 +12,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
 public class HomeEvents implements Listener {
 
@@ -70,6 +72,18 @@ public class HomeEvents implements Listener {
                     player.sendMessage(msg);
                     player.closeInventory();
                 }
+            }
+        }
+    }
+
+    @EventHandler
+    public void onCommandPreProcess(PlayerCommandPreprocessEvent e) {
+        Player player = e.getPlayer();
+        if (e.getMessage().equalsIgnoreCase("/home") || e.getMessage().equalsIgnoreCase("/homes") || e.getMessage().equalsIgnoreCase("/homelist")) {
+            if (player.hasPermission("huskhomes.home")) {
+                HomeGUI gui = new HomeGUI(player.getName(), player.getUniqueId());
+                player.openInventory(gui.getInventory());
+                e.setCancelled(true);
             }
         }
     }

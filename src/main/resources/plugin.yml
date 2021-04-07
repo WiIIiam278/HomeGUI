@@ -4,7 +4,6 @@ version: 1.0
 main: com.technovision.HuskHomesGUI.HuskHomesGUI
 api-version: 1.16
 depend: [HuskHomes]
-loadbefore: [HuskHomes]
 authors: [TechnoVision, William278]
 commands:
   h:
