@@ -5,8 +5,3 @@ main: com.technovision.HuskHomesGUI.HuskHomesGUI
 api-version: 1.16
 depend: [HuskHomes]
 authors: [TechnoVision, William278]
-commands:
-  h:
-    description: Opens the home GUI
-    usage: /h
-    aliases: [home, homes, homelist]
