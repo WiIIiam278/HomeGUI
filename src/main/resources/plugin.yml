@@ -1,6 +1,6 @@
 name: HuskHomesGUI
 description: Fork of HomeGUI that works with HuskHomes
-version: 1.0
+version: 1.01
 main: com.technovision.HuskHomesGUI.HuskHomesGUI
 api-version: 1.16
 depend: [HuskHomes]
