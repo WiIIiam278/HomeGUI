@@ -3,6 +3,8 @@ package com.technovision.HuskHomesGUI.gui;
 import com.cryptomorin.xseries.XMaterial;
 import com.technovision.HuskHomesGUI.HuskHomesGUI;
 import com.technovision.HuskHomesGUI.playerdata.HomeIcon;
+import de.themoep.minedown.MineDown;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -15,13 +17,12 @@ import java.util.*;
 
 public class ChangeIconGUI implements InventoryHolder, Listener {
 
-    public static List<String> activeGui = new ArrayList<String>();
+    public static List<String> activeGui = new ArrayList<>();
     public static Map<String, HomeIcon> homes = new HashMap<>();
     private final Inventory inv;
 
     public ChangeIconGUI() {
-        String title = HuskHomesGUI.PLUGIN.getConfig().getString("gui-icon-header").replace('&', '§');
-        title = title.replace("§8", "");
+        String title = TextComponent.toLegacyText(new MineDown(HuskHomesGUI.PLUGIN.getConfig().getString("gui-icon-header")).toComponent());
         inv = Bukkit.createInventory(this, 54, title);
         initItems();
     }
@@ -29,7 +30,7 @@ public class ChangeIconGUI implements InventoryHolder, Listener {
     private ItemStack addItemLore(ItemStack item) {
         final ItemMeta meta = item.getItemMeta();
         if (meta != null) {
-            meta.setLore(Collections.singletonList(HuskHomesGUI.PLUGIN.getConfig().getString("icon-select-lore-message").replace('&', '§')));
+            meta.setLore(Collections.singletonList(TextComponent.toLegacyText(new MineDown(HuskHomesGUI.PLUGIN.getConfig().getString("icon-select-lore-message")).toComponent())));
             item.setItemMeta(meta);
         }
         return item;
@@ -50,7 +51,7 @@ public class ChangeIconGUI implements InventoryHolder, Listener {
                     inv.addItem(addItemLore(item));
                 }
             } catch (IllegalArgumentException e) {
-                HuskHomesGUI.PLUGIN.getLogger().config("Error: Incorrect or Missing Material Type in Config.yml!");
+                HuskHomesGUI.PLUGIN.getLogger().config("A material ID specified in config.yml was missing or invalid!");
             }
         }
     }

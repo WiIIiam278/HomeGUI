@@ -4,6 +4,7 @@ import com.cryptomorin.xseries.XMaterial;
 import com.technovision.HuskHomesGUI.HuskHomesGUI;
 import com.technovision.HuskHomesGUI.gui.ChangeIconGUI;
 import com.technovision.HuskHomesGUI.gui.HomeGUI;
+import de.themoep.minedown.MineDown;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -66,10 +67,10 @@ public class HomeEvents implements Listener {
                     String homeName = ChangeIconGUI.homes.get(playerID).getName();
                     HuskHomesGUI.dataReader.write(playerID, homeName, icon.parseMaterial());
 
-                    String msg = HuskHomesGUI.PLUGIN.getConfig().getString("icon-select-message").replace("&", "§");
+                    String msg = HuskHomesGUI.PLUGIN.getConfig().getString("icon-select-message");
                     msg = msg.replace("{home}", homeName);
                     msg = msg.replace("{icon}", itemName);
-                    player.sendMessage(msg);
+                    player.spigot().sendMessage(new MineDown(msg).toComponent());
                     player.closeInventory();
                 }
             }

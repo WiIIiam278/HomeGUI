@@ -3,6 +3,8 @@ package com.technovision.HuskHomesGUI.gui;
 import com.technovision.HuskHomesGUI.HuskHomesGUI;
 import com.technovision.HuskHomesGUI.playerdata.HomeIcon;
 import com.technovision.HuskHomesGUI.playerdata.HuskHomesReader;
+import de.themoep.minedown.MineDown;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
@@ -15,14 +17,13 @@ public class HomeGUI implements InventoryHolder {
 
     public static Map<String, List<HomeIcon>> allHomes = new HashMap<>();
 
-    private Inventory inv;
-    private List<HomeIcon> homes;
+    private final Inventory inv;
+    private final List<HomeIcon> homes;
 
     public HomeGUI(String playerName, UUID playerUUID) {
         HuskHomesReader reader = new HuskHomesReader(playerName);
         homes = reader.getHomes();
-        String title = HuskHomesGUI.PLUGIN.getConfig().getString("gui-main-header").replace('&', '§');
-        title = title.replace("§8", "");
+        String title = TextComponent.toLegacyText(new MineDown(HuskHomesGUI.PLUGIN.getConfig().getString("gui-main-header")).toComponent());
         inv = Bukkit.createInventory(this, calculateSize(), title);
         allHomes.put(playerName, homes);
         HuskHomesGUI.dataReader.create(playerUUID.toString());
@@ -46,27 +47,22 @@ public class HomeGUI implements InventoryHolder {
         for (HomeIcon home : homes) {
             name = home.getName().substring(0, 1).toUpperCase() + home.getName().substring(1);
             ItemStack item = HuskHomesGUI.dataReader.getItem(playerID, home.getName());
-            String nameColor = HuskHomesGUI.PLUGIN.getConfig().getString("home-color").replace("&", "§");
-            name = nameColor + name;
+            String nameColor = HuskHomesGUI.PLUGIN.getConfig().getString("home-color");
+            name = TextComponent.toLegacyText(new MineDown(nameColor + name).toComponent());
             List<String> lore = HuskHomesGUI.PLUGIN.getConfig().getStringList("home-lore");
-            String location = "§f " + (int) home.getX() + "§7,§f " + (int) home.getY() + "§7,§f " + (int) home.getZ();
+            String location = "&f " + (int) home.getX() + "&7,&f " + (int) home.getY() + "&7,&f " + (int) home.getZ();
             for (int i = 0; i < lore.size(); i++) {
                 String newLine = lore.get(i).replace("{location}", location);
                 newLine = newLine.replace("{world}", home.getWorldName());
                 newLine = newLine.replace("{server}", home.getServer());
                 if (newLine.contains("{privacy}")) {
                     if (home.isPublic()) {
-                        newLine = newLine.replace("{privacy}", "§2Public");
+                        newLine = newLine.replace("{privacy}", "&2Public");
                     } else {
-                        newLine = newLine.replace("{privacy}", "§cPrivate");
+                        newLine = newLine.replace("{privacy}", "&cPrivate");
                     }
                 }
-                if (newLine.contains("&")) {
-                    newLine = newLine.replace("&", "§");
-                } else {
-                    newLine = "§f" + newLine;
-                }
-                lore.set(i, newLine);
+                lore.set(i, TextComponent.toLegacyText(new MineDown(newLine).toComponent()));
             }
             inv.addItem(createGuiItem(item, name, lore));
         }

@@ -4,8 +4,8 @@ This plugin is a fork of [HomeGUI](https://github.com/TechnoVisionDev/HomeGUI) w
 This plugin supports HuskHomes v2.3+. To install it, simply download HuskHomes and this plugin and place them in your plugin directory.
 
 ## Notes
-* This plugin saves the icon data locally through yaml files. It does not support syncing your home icon preference between servers through a database... yet.
-* This plugin has some light configuration (changing messages and available icons) but does not support MineDown... yet.
+* This plugin has some light configuration (changing messages and available icons), with text configurable using [MineDown](https://github.com/Phoenix616/MineDown) formatting.
+* This plugin saves the icon data locally through yaml files. It does not support syncing your home icon preference between servers. In the future, I plan on giving you the option to have home icons be player heads or have the icon be based on a seeded random number, the seed being the home and owner name (thus the same cross-server).
 * This plugin does not support HuskHomes warps... yet.
 
 ## Links

@@ -10,14 +10,14 @@
 # {server} ---> Displays the server the home is on (icon-select-message)
 # ------------------------------------------------------------
 # IMPORTANT NOTES:
+#    > Formatting uses MineDown (https://github.com/Phoenix616/MineDown)
 #    > Do not add more than 54 icons!
 #    > Wrap your text in '' (quotes) if using color codes
 #    > Only use {world}, {location}, {privacy} and {server} in home-lore
 #    > Only use {home} and {icon} in icon-select-message
 # ------------------------------------------------------------
-gui-main-header: '&8Your Homes'
-gui-icon-header: '&8Select Home Icon'
-gui-sethome-header: '&8Set Home'
+gui-main-header: '&8Your homes'
+gui-icon-header: '&8Select home icon'
 icon-select-message: '&aSaved &l{home}&r&a home icon to &l{icon}'
 icon-select-lore-message: '&7Click to select material.'
 home-color: '&b&l'
