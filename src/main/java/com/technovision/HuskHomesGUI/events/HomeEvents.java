@@ -15,10 +15,12 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
+import java.util.Locale;
+
 public class HomeEvents implements Listener {
 
     @EventHandler
-    public void onGuiActivation(InventoryClickEvent event){
+    public void onGuiActivation(InventoryClickEvent event) {
         if (event.getInventory().getHolder() instanceof HomeGUI) {
             if (event.getClickedInventory() == null) {
                 return;
@@ -35,6 +37,10 @@ public class HomeEvents implements Listener {
                 String playerName = player.getName();
                 int slotNum = event.getSlot();
                 String name = HomeGUI.allHomes.get(playerName).get(slotNum).getName();
+                String homeStyle = HuskHomesGUI.PLUGIN.getConfig().getString("home_style");
+                if (homeStyle == null) {
+                    homeStyle = "item";
+                }
 
                 if (event.isLeftClick()) {
                     // Middle Click
@@ -43,9 +49,15 @@ public class HomeEvents implements Listener {
                 } else if (event.getClick() == ClickType.MIDDLE) {
                     // Middle Click
                     player.performCommand("huskhomes:delhome " + name);
-                    HuskHomesGUI.dataReader.removeIcon(player.getUniqueId().toString(), name);
+                    if (homeStyle.toLowerCase(Locale.ROOT).equalsIgnoreCase("item")) {
+                        HuskHomesGUI.dataReader.removeIcon(player.getUniqueId().toString(), name);
+                    }
                     player.closeInventory();
                 } else if (event.isRightClick()) {
+                    if (homeStyle.toLowerCase(Locale.ROOT).equalsIgnoreCase("color") || homeStyle.toLowerCase(Locale.ROOT).equalsIgnoreCase("colour")) {
+                        return;
+                    }
+
                     // Right Click
                     player.closeInventory();
                     ChangeIconGUI iconGUI = new ChangeIconGUI();
@@ -53,12 +65,18 @@ public class HomeEvents implements Listener {
                 }
             }
         } else if (event.getInventory().getHolder() instanceof ChangeIconGUI) {
-            if (event.getClickedInventory() == null) { return; }
+            if (event.getClickedInventory() == null) {
+                return;
+            }
             Player player = (Player) event.getWhoClicked();
             if (event.getCurrentItem() != null) {
-                if (event.getCurrentItem().getType() == Material.AIR) { return; }
+                if (event.getCurrentItem().getType() == Material.AIR) {
+                    return;
+                }
                 event.setCancelled(true);
-                if (event.getClickedInventory().getType() == InventoryType.PLAYER) { return; }
+                if (event.getClickedInventory().getType() == InventoryType.PLAYER) {
+                    return;
+                }
                 if (event.isLeftClick()) {
                     String itemName = getFriendlyName(event.getCurrentItem().getType());
                     String playerID = event.getWhoClicked().getUniqueId().toString();
@@ -82,9 +100,11 @@ public class HomeEvents implements Listener {
         Player player = e.getPlayer();
         if (e.getMessage().equalsIgnoreCase("/home") || e.getMessage().equalsIgnoreCase("/homes") || e.getMessage().equalsIgnoreCase("/homelist")) {
             if (player.hasPermission("huskhomes.home")) {
-                HomeGUI gui = new HomeGUI(player.getName(), player.getUniqueId());
-                player.openInventory(gui.getInventory());
                 e.setCancelled(true);
+                Bukkit.getScheduler().runTaskAsynchronously(HuskHomesGUI.PLUGIN, () -> {
+                    HomeGUI gui = new HomeGUI(player.getName(), player.getUniqueId());
+                    Bukkit.getScheduler().runTask(HuskHomesGUI.PLUGIN, () -> player.openInventory(gui.getInventory()));
+                });
             }
         }
     }

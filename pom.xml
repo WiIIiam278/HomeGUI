@@ -6,7 +6,7 @@
 
     <groupId>com.technovision</groupId>
     <artifactId>HuskHomesGUI</artifactId>
-    <version>1.1</version>
+    <version>1.2</version>
     <packaging>jar</packaging>
 
     <name>HuskHomesGUI</name>
@@ -36,11 +36,15 @@
                     <relocations>
                         <relocation>
                             <pattern>org.bstats</pattern>
-                            <shadedPattern>me.william278.huskhomes2.integrations</shadedPattern>
+                            <shadedPattern>me.william278.huskhomesgui.integrations</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>de.themoep.minedown</pattern>
-                            <shadedPattern>me.william278.huskhomes2.minedown</shadedPattern>
+                            <shadedPattern>me.william278.huskhomesgui.minedown</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>de.themoep.huskhomes2</pattern>
+                            <shadedPattern>me.william278.huskhomesgui.huskhomes2</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>
@@ -103,7 +107,8 @@
         <dependency>
             <groupId>com.github.WiIIiam278</groupId>
             <artifactId>HuskHomes2</artifactId>
-            <version>2.3</version>
+            <version>2.5</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.bstats</groupId>

@@ -17,7 +17,6 @@ public class PlayerDataReader {
     private static final String dir = "plugins/HuskHomesGUI/userdata/";
     private static Map<String, File> playerFiles;
 
-
     public PlayerDataReader() {
         File data = new File(dir);
         data.mkdirs();

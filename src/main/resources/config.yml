@@ -16,12 +16,19 @@
 #    > Only use {world}, {location}, {privacy} and {server} in home-lore
 #    > Only use {home} and {icon} in icon-select-message
 # ------------------------------------------------------------
+# HOME STYLE
+#    > This setting can be "ITEM" or "COLORED"
+#    > ITEM lets the player pick the item they want. Saved locally on the server.
+#    > COLOR represents homes with dyed leather armour. No data is stored.
+#      The color of the armour is based on the home name, so it's the same cross-server.
+# ------------------------------------------------------------
+home_style: ITEM
 gui-main-header: '&8Your homes'
 gui-icon-header: '&8Select home icon'
 icon-select-message: '&aSaved &l{home}&r&a home icon to &l{icon}'
 icon-select-lore-message: '&7Click to select material.'
-home-color: '&b&l'
-home-lore:
+item-home-color: '&b&l'
+item-home-lore:
   - '&7Location: &f{location}'
   - '&7World: &f{world}'
   - '&7Server: &f{server}'
@@ -30,6 +37,14 @@ home-lore:
   - '&7Left-Click to Teleport'
   - '&7Middle-Click to Delete Home'
   - '&7Right-Click to Edit Icon'
+color-home-lore:
+  - '&7Location: &f{location}'
+  - '&7World: &f{world}'
+  - '&7Server: &f{server}'
+  - '&7Access: &f{privacy}'
+  - ''
+  - '&7Left-Click to Teleport'
+  - '&7Middle-Click to Delete Home'
 icons:
   - DIRT
   - STONE
