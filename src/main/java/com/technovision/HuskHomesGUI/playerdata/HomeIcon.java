@@ -2,14 +2,11 @@ package com.technovision.HuskHomesGUI.playerdata;
 
 import me.william278.huskhomes2.teleport.points.Home;
 import me.william278.huskhomes2.teleport.points.TeleportationPoint;
-import org.bukkit.Material;
 
 import java.awt.*;
 import java.util.Random;
 
 public class HomeIcon extends Home {
-
-    private Material icon;
 
     // Converts a string into an integer value, used in getting home color
     private static long getStringValue(String string) {
@@ -34,16 +31,7 @@ public class HomeIcon extends Home {
         return Color.decode(getColorHex());
     }
 
-    public HomeIcon(TeleportationPoint teleportationPoint, String ownerUsername, String ownerUUID, String name, String description, boolean isPublic, Material icon) {
+    public HomeIcon(TeleportationPoint teleportationPoint, String ownerUsername, String ownerUUID, String name, String description, boolean isPublic) {
         super(teleportationPoint, ownerUsername, ownerUUID, name, description, isPublic);
-        this.icon = icon;
-    }
-
-    public Material getIcon() {
-        return icon;
-    }
-
-    public void setIcon(Material newIcon) {
-        icon = newIcon;
     }
 }
