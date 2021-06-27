@@ -1,6 +1,7 @@
 [![Header](https://i.imgur.com/p6qAvld.png "Header")](https://www.spigotmc.org/resources/homegui-for-huskhomes.91059/)
 # HomeGUI for HuskHomes
 [![Discord](https://img.shields.io/discord/818135932103557162?color=7289da&logo=discord)](https://discord.gg/tVYhJfyDWG)
+
 This plugin is a fork of TechnoVision's HomeGUI with support for HuskHomes instead of EssentialsX. It provides an interactive GUI interface for HuskHomes homes. In other words, it's an add on for HuskHomes that changes the chat-based home list into a GUI with customisable home icons.
 
 ## Features
