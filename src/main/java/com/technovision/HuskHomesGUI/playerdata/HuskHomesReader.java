@@ -1,6 +1,7 @@
 package com.technovision.HuskHomesGUI.playerdata;
 
-import com.cryptomorin.xseries.XMaterial;
+import com.technovision.HuskHomesGUI.HuskHomesGUI;
+import me.william278.huskhomes2.HuskHomes;
 import me.william278.huskhomes2.api.HuskHomesAPI;
 import me.william278.huskhomes2.teleport.points.Home;
 
