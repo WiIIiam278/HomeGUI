@@ -115,7 +115,7 @@
         <dependency>
             <groupId>com.github.WiIIiam278</groupId>
             <artifactId>HuskHomes2</artifactId>
-            <version>f7e2b6431f</version>
+            <version>2.6.2</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
