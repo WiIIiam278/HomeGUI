@@ -19,7 +19,7 @@ public class HuskHomesReader {
             if (home == null) {
                 continue;
             }
-            HomeIcon icon = new HomeIcon(home, home.getOwnerUsername(), home.getOwnerUUID().toString(), home.getName(), home.getDescription(), home.isPublic());
+            HomeIcon icon = new HomeIcon(home, home.getOwnerUsername(), home.getOwnerUUID(), home.getName(), home.getDescription(), home.isPublic(), home.getCreationTime());
             homes.add(icon);
         }
     }

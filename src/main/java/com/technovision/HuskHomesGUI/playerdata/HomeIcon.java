@@ -5,6 +5,7 @@ import me.william278.huskhomes2.teleport.points.TeleportationPoint;
 
 import java.awt.*;
 import java.util.Random;
+import java.util.UUID;
 
 public class HomeIcon extends Home {
 
@@ -31,7 +32,7 @@ public class HomeIcon extends Home {
         return Color.decode(getColorHex());
     }
 
-    public HomeIcon(TeleportationPoint teleportationPoint, String ownerUsername, String ownerUUID, String name, String description, boolean isPublic) {
-        super(teleportationPoint, ownerUsername, ownerUUID, name, description, isPublic);
+    public HomeIcon(TeleportationPoint teleportationPoint, String ownerUsername, UUID ownerUUID, String name, String description, boolean isPublic, long timestamp) {
+        super(teleportationPoint, ownerUsername, ownerUUID, name, description, isPublic, timestamp);
     }
 }
