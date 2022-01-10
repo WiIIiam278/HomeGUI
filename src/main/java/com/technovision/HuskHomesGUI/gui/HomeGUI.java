@@ -95,16 +95,19 @@ public class HomeGUI implements InventoryHolder {
     }
 
     private void addItem(String name, HomeIcon home, ItemStack item, List<String> lore) {
-        String location = "&f " + (int) home.getX() + "&7,&f " + (int) home.getY() + "&7,&f " + (int) home.getZ();
+        String location = HuskHomesGUI.PLUGIN.getConfig().getString("item-location-format")
+                .replace("{x}", String.valueOf((int)home.getX()))
+                .replace("{y}", String.valueOf((int)home.getY()))
+                .replace("{z}", String.valueOf((int)home.getZ()));
         for (int i = 0; i < lore.size(); i++) {
             String newLine = lore.get(i).replace("{location}", location);
             newLine = newLine.replace("{world}", home.getWorldName());
             newLine = newLine.replace("{server}", home.getServer());
             if (newLine.contains("{privacy}")) {
                 if (home.isPublic()) {
-                    newLine = newLine.replace("{privacy}", "&2Public");
+                    newLine = newLine.replace("{privacy}", HuskHomesGUI.PLUGIN.getConfig().getString("item-public-format"));
                 } else {
-                    newLine = newLine.replace("{privacy}", "&cPrivate");
+                    newLine = newLine.replace("{privacy}", HuskHomesGUI.PLUGIN.getConfig().getString("item-private-format"));
                 }
             }
             lore.set(i, TextComponent.toLegacyText(new MineDown(newLine).toComponent()));
